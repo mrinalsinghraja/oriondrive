@@ -3,125 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MSRX Orion Drive — Premium Cloud File Manager for Mac</title>
-  <meta name="description" content="MSRX Orion Drive unifies Google Drive and local storage in one premium macOS app. Browse, manage, upload and download files seamlessly.">
+  <title>Orion Drive — MSRX</title>
+  <meta name="description" content="Cloud & Local File Management for macOS. Access all your files, anywhere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #18181D; color: #F0F0F5; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; line-height: 1.6; }
-    a { color: #00C7C5; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid #2E2E35; }
-    .nav-brand { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 700; color: #F0F0F5; }
-    .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
-    nav a { font-size: 14px; color: #9898A8; }
-
-    .hero { text-align: center; padding: 80px 24px 60px; }
-    .logo { width: 110px; height: 110px; border-radius: 28px; margin-bottom: 28px; box-shadow: 0 20px 60px rgba(0,199,197,0.25); }
-    h1 { font-size: 48px; font-weight: 800; background: linear-gradient(90deg, #00C7C5, #0099FF, #8B4FFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; letter-spacing: -1px; }
-    .subtitle { font-size: 20px; color: #9898A8; max-width: 480px; margin: 0 auto 48px; }
-    .cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .cta { display: inline-block; background: linear-gradient(135deg, #00C7C5, #0099FF); color: white; padding: 15px 40px; border-radius: 14px; font-size: 16px; font-weight: 600; box-shadow: 0 8px 30px rgba(0,153,255,0.35); }
-    .badges { display: flex; gap: 16px; color: #6A6A78; font-size: 13px; }
-
-    .features-section { padding: 60px 24px; max-width: 900px; margin: 0 auto; }
-    .features-section h2 { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .feature { background: #27272E; border: 0.5px solid #38383F; border-radius: 18px; padding: 28px 24px; }
-    .feature-icon { font-size: 32px; margin-bottom: 14px; }
-    .feature h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .feature p { font-size: 13px; color: #9898A8; line-height: 1.6; }
-
-    .privacy-strip { background: #222228; border-top: 1px solid #2E2E35; border-bottom: 1px solid #2E2E35; padding: 32px 24px; text-align: center; }
-    .privacy-strip h2 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
-    .privacy-strip p { color: #9898A8; font-size: 15px; max-width: 560px; margin: 0 auto; }
-    .privacy-points { display: flex; justify-content: center; gap: 40px; margin-top: 24px; flex-wrap: wrap; }
-    .privacy-point { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #9898A8; }
-
-    footer { text-align: center; padding: 40px 24px; color: #6A6A78; font-size: 13px; }
-    footer a { color: #00C7C5; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --surface: #f5f5f7; --border: rgba(0,0,0,0.06);
+      --text: #1d1d1f; --text2: #6e6e73; --text3: #a1a1a6;
+      --gradient: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { width: 26px; height: 32px; }
+    .nav-logo-text { font-size: 16px; font-weight: 700; color: var(--text); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { max-width: 1100px; margin: 0 auto; padding: 80px 24px 60px; text-align: center; }
+    .app-icon { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); margin: 0 auto 32px; background: linear-gradient(135deg, #1d4ed8 0%, #00c4df 100%); display: flex; align-items: center; justify-content: center; }
+    .app-icon-text { font-size: 40px; font-weight: 800; color: white; letter-spacing: -0.02em; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 18px; color: var(--text2); max-width: 520px; margin: 0 auto 36px; line-height: 1.6; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; background: var(--gradient); color: white; font-size: 15px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; box-shadow: 0 4px 20px rgba(0,196,223,0.3); }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: all 0.15s; }
+    .btn-secondary:hover { background: #ebebed; }
+    .features { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+    .section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text3); text-align: center; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--surface); border-radius: 20px; padding: 28px; border: 1px solid var(--border); }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+    .divider { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+    footer { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-left { font-size: 13px; color: var(--text3); }
+    .footer-right { display: flex; gap: 20px; }
+    .footer-right a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
+    .footer-right a:hover { color: var(--text2); }
+    @media (max-width: 600px) { .hero { padding: 48px 16px 40px; } .features { padding: 40px 16px; } footer { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
-
   <nav>
-    <div class="nav-brand">
-      <img src="logo.png" alt="MSRX Orion Drive">
-      MSRX Orion Drive
+    <div class="nav-inner">
+      <a href="https://msrx.co.in" class="nav-logo">
+        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="mg" x1="0" y1="0" x2="100" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c4df"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+          <path d="M6 110 L6 12 L50 62 L94 12 L94 110 L76 110 L76 46 L50 80 L24 46 L24 110 Z" fill="url(#mg)"/>
+        </svg>
+        <span class="nav-logo-text">MSRX</span>
+      </a>
+      <nav class="nav-links">
+        <a href="https://msrx.co.in/#apps">All Apps</a>
+        <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
     </div>
-    <a href="privacy.html">Privacy Policy</a>
   </nav>
-
-  <div class="hero">
-    <img class="logo" src="logo.png" alt="MSRX Orion Drive Logo">
-    <h1>MSRX Orion Drive</h1>
-    <p class="subtitle">Premium cloud file manager for macOS by MSRX. Google Drive and local storage, beautifully unified.</p>
-    <div class="cta-group">
-      <a class="cta" href="#">Download on the Mac App Store</a>
-      <div class="badges">
-        <span>🔒 Privacy First</span>
-        <span>•</span>
-        <span>No Telemetry</span>
-        <span>•</span>
-        <span>macOS 14+</span>
-        <span>•</span>
-        <span>Free</span>
-      </div>
-    </div>
-  </div>
-
-  <section class="features-section">
-    <h2>Everything you need in one place</h2>
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">☁️</div>
-        <h3>Google Drive</h3>
-        <p>Browse, upload, download and manage all your Google Drive files natively on Mac — no browser needed.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📁</div>
-        <h3>Local Storage</h3>
-        <p>Access your Desktop, Downloads, Documents and iCloud Drive from a single unified sidebar.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🔍</div>
-        <h3>Instant Search</h3>
-        <p>Find any file across Google Drive and your local Mac in milliseconds with real-time results.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Smart Transfers</h3>
-        <p>Upload and download files in the background with live progress tracking and transfer queue.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">👁</div>
-        <h3>File Preview</h3>
-        <p>Preview PDFs, images, documents and videos without opening another app — including cloud files.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🎨</div>
-        <h3>Premium Design</h3>
-        <p>A beautifully crafted macOS-native UI with dark mode, smooth animations and a premium feel.</p>
-      </div>
+  <section class="hero">
+    <div class="app-icon"><span class="app-icon-text">OD</span></div>
+    <p class="eyebrow">macOS &middot; MSRX</p>
+    <h1>Orion Drive<br><span>Files. Anywhere. Always.</span></h1>
+    <p>Unified cloud and local file management for macOS. Access, organize, and sync your files seamlessly across every device.</p>
+    <div class="cta-row">
+      <a href="https://oriondrive.msrx.co.in" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Visit Web App
+      </a>
+      <a href="https://msrx.co.in" class="btn-secondary">More MSRX Apps &rarr;</a>
     </div>
   </section>
-
-  <div class="privacy-strip">
-    <h2>🔒 Privacy First</h2>
-    <p>MSRX Orion Drive connects directly to Google's official APIs using your own account. We never see, store or process your files.</p>
-    <div class="privacy-points">
-      <div class="privacy-point"><span>✓</span><span>No analytics or tracking</span></div>
-      <div class="privacy-point"><span>✓</span><span>No telemetry</span></div>
-      <div class="privacy-point"><span>✓</span><span>Files never leave Google's servers</span></div>
-      <div class="privacy-point"><span>✓</span><span>OAuth 2.0 secure authentication</span></div>
+  <div class="divider"><hr></div>
+  <section class="features">
+    <p class="section-title">Key Features</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">&#x2601;&#xFE0F;</div><h3>Cloud Storage Access</h3><p>Connect to your favourite cloud providers and access all your files from one unified interface.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#x1F4C1;</div><h3>Local File Management</h3><p>Browse and organize local files with a clean, intuitive interface designed for macOS power users.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#x1F504;</div><h3>Cross-Device Sync</h3><p>Keep your files perfectly in sync across all your devices without missing a beat.</p></div>
     </div>
-  </div>
-
+  </section>
+  <div class="divider"><hr></div>
   <footer>
-    <p>© 2026 MSRX. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-    Contact: <a href="mailto:mrinalsinghraja@gmail.com">mrinalsinghraja@gmail.com</a></p>
-    <p style="margin-top:8px">CONNECT. ACCESS. WORK. ANYWHERE.</p>
+    <p class="footer-left">&copy; 2025 MSRX. All rights reserved.</p>
+    <div class="footer-right">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
+      <a href="https://msrx.co.in">msrx.co.in</a>
+    </div>
   </footer>
-
 </body>
 </html>
